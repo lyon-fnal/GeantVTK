@@ -1,0 +1,11 @@
+This is the VTK visualization driver for Geant4. 
+Put the VTK folder into source/visualization.
+
+In source/visualization/CMakeLists.txt, add:
+	add_subdirectory(VTK)
+
+To build one of Geant's examples, modify the example's CMakeLists.txt with:
+	find_package(ParaView)
+	link_directories(<ParaViewBuildDir>/lib)
+	target_link_libraries(exampleB1 G4visVTK ${Geant4_LIBRARIES})
+    Also, in vis.mac, change one of the statements to "/vis/open G4VTK"
